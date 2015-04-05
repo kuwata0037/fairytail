@@ -22,6 +22,32 @@
 
    clobber_packageタスクが追加されている．これはパッケージとパッケージ生成用の一時ファイル全てを削除する．
    なお，このタスクはclobberタスクの依存先に追加されている．
+** テストタスク
+   ユニットテストを自動実行するタスク．
+   #+BEGIN_SRC ruby
+   # 最小構成
+   # TestTask のデフォルト値に合わせった場合(test/test*.rbのパターンにマッチするようにした場合)
+   require 'rake/testtask'
+   Rake::TestTask.new
+   #+END_SRC
+   #+BEGIN_SRC ruby
+   require 'rake/testtask'
+   Rake::TestTask.new('tasttaskname') do |t|
+       t.libs << '/libs'                                              # $LOAD_PATHに追加するディレクトリの設定
+       t.test_files = FileList['unittest/*_test.rb', 'test/test*.rb'] # 実行するテストファイルの設定
+       t.loader = :rake                                               # 使用するテストローダの設定(:rake, :testrb, :direct)
+       t.pattern = 'test/test*.rb'                                    # 実行するテストファイルを示すパターンの設定
+       t.warning = true                                               # テストの警告表示の設定
+       t.verbose = true                                               # テスト実行時の出力を詳細化する設定
+   end
+   #+END_SRC
+
+   実行
+   #+BEGIN_SRC sh
+   $ rake test                # デフォルト
+   $ rake testtaskname        # testtask名指定時
+   $ rake TEST='testfilepath' # 実行するテストファイルを指定時
+   #+END_SRC
 ** クリーニング
 
    ファイル群削除タスク．=require 'rake/clean'= をすると FileList =CLEAN=, =CLOBBER= が追加される.
