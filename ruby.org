@@ -37,4 +37,4 @@
    $ rake clean   # CLEANに指定したファイルを削除
    $ rake clobber # CLEANとCLOBBER に指定したファイルを削除
    #+END_SRC
-   =CLEAN= は主に一時ファイルの削除に使用し，=CLOBBER= は全ての生成したファイルの削除に使用する．
+   =CLEAN= は主に一時ファイルの削除に使用し， =CLOBBER= は全ての生成したファイルの削除に使用する．
