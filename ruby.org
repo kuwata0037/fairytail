@@ -1,0 +1,28 @@
+* Ruby
+* Rake
+** 基本
+** パッケージタスク
+
+   リリース用のパッケージ生成のタスク
+   #+BEGIN_SRC ruby
+   Rake::PackageTask.new('packagename', 'version') do |p|
+       p.package_dir = './pkg'
+       p.package_files.include('lib/**/*')
+       p.need_zip = true
+       p.need_tar_gz = true
+       p.need_tar_bz2 = true
+   end
+   #+END_SRC
+
+   パラメータ
+   - package_dir :: パッケージの配置先のディレクトリ
+   - package_files :: パッケージに含めるファイル群
+   - need_zip :: zip形式のパッケージを作成するか否か(作成する場合は true)
+   - need_tar :: tgz形式のパッケージを作成するか否か
+   - need_tar_gz :: tar.gz形式のパッケージを作成するか否か
+   - need_tar_bz2 :: tar.bz2形式のパッケージを作成するか否か
+   - name :: パッケージ名
+   - version :: バージョン番号
+
+   clobber_packageタスクが追加されている．これはパッケージとパッケージ生成用の一時ファイル全てを削除する．
+   なお，このタスクはclobberタスクの依存先に追加されている．
