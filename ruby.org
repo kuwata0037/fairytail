@@ -50,7 +50,7 @@
    #+END_SRC
 ** クリーニング
 
-   ファイル群削除タスク． =require 'rake/clean'= をすると FileList =CLEAN=, =CLOBBER= が追加される.
+   ファイル群削除タスク． =rake/clean= をrequireすると FileList =CLEAN=, =CLOBBER= が追加される.
    この定数に削除したいファイル等を追加していく．
    #+BEGIN_SRC ruby
    require 'rake/clean'
