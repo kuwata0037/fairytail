@@ -22,3 +22,19 @@
 
    clobber_packageタスクが追加されている．これはパッケージとパッケージ生成用の一時ファイル全てを削除する．
    なお，このタスクはclobberタスクの依存先に追加されている．
+** クリーニング
+
+   ファイル群削除タスク．=require 'rake/clean'= をすると FileList =CLEAN=, =CLOBBER= が追加される.
+   この定数に削除したいファイル等を追加していく．
+   #+BEGIN_SRC ruby
+   require 'rake/clean
+   CLEAN.include(cleanfiles)
+   CLOBBER.include(clobberfiles)
+   #+END_SRC
+
+   実行
+   #+BEGIN_SRC sh
+   $ rake clean   # CLEANに指定したファイルを削除
+   $ rake clobber # CLEANとCLOBBER に指定したファイルを削除
+   #+END_SRC
+   =CLEAN= は主に一時ファイルの削除に使用し，=CLOBBER= は全ての生成したファイルの削除に使用する．
