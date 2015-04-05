@@ -17,7 +17,7 @@
 
    実行
    #+BEGIN_SRC sh
-   rake package
+   $ rake package
    #+END_SRC
 
    clobber_packageタスクが追加されている．これはパッケージとパッケージ生成用の一時ファイル全てを削除する．
